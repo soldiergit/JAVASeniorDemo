@@ -13,38 +13,19 @@
     <artifactId>Demo-ActiveMQ</artifactId>
     <packaging>pom</packaging>
 
-    <!--多层次嵌套是：必须放在坐标声明之前，否则子model会报错-->
-    <modules>
-        <module>mq-consumer</module>
-        <module>mq-producer</module>
-        <module>spring-activemq-consumer</module>
-        <module>spring-activemq-producer</module>
-    </modules>
-
     <!-- 对依赖的jar包的版本统一进行定义 -->
     <properties>
         <activemq.version>5.9.0</activemq.version>
         <xbean.version>4.5</xbean.version>
         <jms.version>4.1.6.RELEASE</jms.version>
         <activemq-pool.version>5.9.0</activemq-pool.version>
-        <solrj.version>4.10.3</solrj.version>
-        <jedis.version>2.9.0</jedis.version>
         <junit.version>4.12</junit.version>
         <spring.version>4.1.3.RELEASE</spring.version>
-        <mybatis.version>3.2.8</mybatis.version>
-        <mybatis.spring.version>1.2.2</mybatis.spring.version>
-        <mysql.version>5.1.32</mysql.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <druid.version>1.0.9</druid.version>
         <jstl.version>1.2</jstl.version>
         <servlet-api.version>2.5</servlet-api.version>
         <tomcat.version>2.2</tomcat.version>
         <jsp-api.version>2.0</jsp-api.version>
-        <zkClient-version>0.10</zkClient-version>
-        <dubbo-version>2.5.4</dubbo-version>
-        <jackson.version>2.4.2</jackson.version>
-        <commons-net.version>3.3</commons-net.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
     </properties>
 
     <!-- 声明资源的坐标  -->
@@ -80,17 +61,6 @@
                 <artifactId>activemq-jms-pool</artifactId>
                 <version>${activemq-pool.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.apache.solr</groupId>
-                <artifactId>solr-solrj</artifactId>
-                <version>${solrj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
-            </dependency>
             <!-- 单元测试 -->
             <dependency>
                 <groupId>junit</groupId>
@@ -102,29 +72,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
-            </dependency>
-            <!-- Mybatis -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>${mybatis.spring.version}</version>
-            </dependency>
-            <!-- MySql -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-            <!-- 连接池 -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
             </dependency>
             <!-- Spring -->
             <dependency>
@@ -140,16 +87,6 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <!-- JSP相关 -->
@@ -169,25 +106,6 @@
                 <artifactId>jsp-api</artifactId>
                 <version>${jsp-api.version}</version>
                 <scope>provided</scope>
-            </dependency>
-            <!-- 文件上传组件 -->
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>${commons-fileupload.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>commons-net</groupId>
-                <artifactId>commons-net</artifactId>
-                <version>${commons-net.version}</version>
-            </dependency>
-
-            <!-- Jackson Json处理工具包 -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -220,4 +138,11 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <modules>
+        <module>mq-consumer</module>
+        <module>mq-producer</module>
+        <module>spring-activemq-consumer</module>
+        <module>spring-activemq-producer</module>
+    </modules>
 </project>
