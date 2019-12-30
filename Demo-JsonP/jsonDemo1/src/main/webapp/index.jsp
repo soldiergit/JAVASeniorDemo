@@ -17,7 +17,8 @@ $(function(){
  		 */
 		$.ajax({
 			type:"get",
-			url:"http://localhost:9090/user/jsonpFindUser",
+			// url:"http://localhost:9090/user/jsonpFindUser",
+			url:"http://localhost:9090/user/jsonpFindUser2",
 			dataType:"jsonp",
 			jsonp:"callback",
 			success:function(data){

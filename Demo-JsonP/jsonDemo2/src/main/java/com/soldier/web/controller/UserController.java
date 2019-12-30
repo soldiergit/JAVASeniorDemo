@@ -2,6 +2,7 @@ package com.soldier.web.controller;
 
 import com.soldier.commons.JsonUtils;
 import com.soldier.pojo.Users;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,14 +28,8 @@ public class UserController {
     @RequestMapping("/findUser")
     @ResponseBody
     public Object findUser() {
-        Users users1 = new Users(1, "zhangsan", 20);
-        Users users2 = new Users(2, "lisi", 20);
-        Users users3 = new Users(3, "wangwu", 20);
 
-        List<Users> usersList = new ArrayList<Users>();
-        usersList.add(users1);
-        usersList.add(users2);
-        usersList.add(users3);
+        List<Users> usersList = this.addData();
 
         return usersList;
     }
@@ -50,6 +45,32 @@ public class UserController {
     @RequestMapping("/jsonpFindUser")
     @ResponseBody
     public String jsonpFindUser(String callback) {
+        List<Users> usersList = this.addData();
+
+        //  转为json串
+        String json = JsonUtils.objectToJson(usersList);
+
+        // ajax中jsonp的值+"("+对象的json串+")"
+        return callback+"("+json+")";
+    }
+
+    /**
+     * jsonp使用ajax跨域请求
+     *      SpringMVC 对 JsonP 的支持
+     */
+    @RequestMapping("/jsonpFindUser2")
+    @ResponseBody
+    public Object jsonpFindUser2(String callback) {
+        List<Users> usersList = this.addData();
+
+        //  转为json串--不再需要自己的JsonUtils
+        MappingJacksonValue jacksonValue = new MappingJacksonValue(usersList);
+        jacksonValue.setJsonpFunction(callback);
+
+        return jacksonValue;
+    }
+
+    private List<Users> addData() {
         Users users1 = new Users(1, "zhangsan", 20);
         Users users2 = new Users(2, "lisi", 20);
         Users users3 = new Users(3, "wangwu", 20);
@@ -58,11 +79,6 @@ public class UserController {
         usersList.add(users1);
         usersList.add(users2);
         usersList.add(users3);
-
-        //  转为json串
-        String json = JsonUtils.objectToJson(usersList);
-
-        // ajax中jsonp的值+"("+对象的json串+")"
-        return callback+"("+json+")";
+        return usersList;
     }
 }
