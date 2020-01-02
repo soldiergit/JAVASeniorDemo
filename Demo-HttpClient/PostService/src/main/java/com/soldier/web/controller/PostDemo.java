@@ -1,7 +1,9 @@
 package com.soldier.web.controller;
 
+import com.soldier.pojo.Users;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +44,19 @@ public class PostDemo {
         Map<String, String> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
+        return map;
+    }
+
+    /**
+     * HttpClient发送 POST 请求带JSON格式参数
+     */
+    @RequestMapping(value = "/post/param/json", method = RequestMethod.POST)
+    @ResponseBody
+    public Object postTestParamJson(@RequestBody Users users) {
+        System.out.println(users.getUsername() +"--------JSON--------"+users.getPassword());
+        Map<String, String> map = new HashMap<>();
+        map.put("username", users.getUsername());
+        map.put("password", users.getPassword());
         return map;
     }
 
