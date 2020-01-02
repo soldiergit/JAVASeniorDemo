@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Demo-ActiveMQ/spring-activemq-producer" />
+    <file type="web" url="file://$PROJECT_DIR$/Demo-HttpClient/PostService" />
     <file type="web" url="file://$PROJECT_DIR$/Demo-JsonP/jsonDemo1" />
     <file type="web" url="file://$PROJECT_DIR$/Demo-JsonP/jsonDemo2" />
   </component>

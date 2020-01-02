@@ -10,6 +10,7 @@
         <module name="jsonDemo2" />
         <module name="mq-consumer" />
         <module name="mq-producer" />
+        <module name="PostService" />
         <module name="spring-activemq-consumer" />
         <module name="spring-activemq-producer" />
       </profile>
