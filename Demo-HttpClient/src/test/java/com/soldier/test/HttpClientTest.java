@@ -21,7 +21,9 @@ public class HttpClientTest {
     public static void main(String[] args) throws Exception {
 //        HttpClientTest.doGet();
 
-        HttpClientTest.doGetParam();
+//        HttpClientTest.doGetParam();
+
+        HttpClientTest.doPost();
     }
 
     /**
@@ -60,6 +62,27 @@ public class HttpClientTest {
         HttpGet get = new HttpGet(builder.build());
         //  发送请求，并返回响应
         CloseableHttpResponse response = client.execute(get);
+        //处理响应
+        //  获取响应状态码
+        int statusCode = response.getStatusLine().getStatusCode();
+        System.out.println(statusCode);
+        //  获取响应内容
+        HttpEntity responseEntity = response.getEntity();
+        String content = EntityUtils.toString(responseEntity, "utf-8");
+        System.out.println(content);
+        //  关闭连接
+        client.close();
+    }
+
+    /**
+     * 发送 POST 请求不带参数
+     */
+    public static void doPost() throws Exception {
+        CloseableHttpClient client = HttpClients.createDefault();
+        //  创建post请求对象，在请求中输入uri
+        HttpPost post = new HttpPost("http://localhost:8080/test/post");
+        //  发送请求，并返回响应
+        CloseableHttpResponse response = client.execute(post);
         //处理响应
         //  获取响应状态码
         int statusCode = response.getStatusLine().getStatusCode();
