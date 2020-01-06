@@ -7,7 +7,7 @@ import com.mongodb.client.MongoCollection;
  * @author:soldier
  * @Email:583403411@qq.com
  * @create:20-1-5上午11:45
- * @Describe:   Java中接MongoDB数据库-直连方式
+ * @Describe:   【直连】MongoDB数据库
  **/
 public class MongoDBDemo {
 
@@ -21,7 +21,9 @@ public class MongoDBDemo {
 //        //  获取MongoDB中的集合
 //        MongoCollection collection = database.getCollection("dev");
 
-        MongoCollection collection = MongoDBUtil.getCollection("develop", "dev");
+//        MongoCollection collection = MongoDBUtil.getCollection("develop", "dev");
+
+        MongoCollection collection = MongoDBAuthUtil.getCollection("develop", "dev");
 
         System.out.println("ok......");
 
