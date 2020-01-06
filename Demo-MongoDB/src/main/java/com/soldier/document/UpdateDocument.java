@@ -16,7 +16,11 @@ public class UpdateDocument {
 
     //  {}---->Document：一个document对象对应MongoDB中的一个{}
     public static void main(String[] args) {
-        updateSingleDocumentSingleKey();
+
+//        updateSingleDocumentSingleKey();
+
+        updateSingleDocumentManyKey();
+
     }
 
     /**
@@ -28,5 +32,17 @@ public class UpdateDocument {
         MongoCollection collection = MongoDBAuthPoolUtil.getCollection("develop", "devcolltest");
         //  更新文档    Filters封装了MongoDB的操作符
         collection.updateOne(Filters.eq("username", "lisi"), new Document("$set", new Document("userage", 28)));
+    }
+
+    /**
+     * 更新单个文档的多个键
+     *  更新zhangsan0的年龄为18、userdesc为veryok == db.devcolltest.update({username: "lisi"}, {$set: {userage: 18}, {userdesc: "Very Ok!!"}})
+     */
+    public static void updateSingleDocumentManyKey() {
+        //  获取集合
+        MongoCollection collection = MongoDBAuthPoolUtil.getCollection("develop", "devcolltest");
+        //  更新文档    Filters封装了MongoDB的操作符
+        collection.updateOne(Filters.eq("username", "zhangsan0"), new Document("$set",
+                new Document("userage", 18).append("userdesc", "Very Ok!!")));
     }
 }
