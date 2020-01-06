@@ -12,6 +12,7 @@
         <module>Demo-ActiveMQ</module>
         <module>Demo-JsonP</module>
         <module>Demo-HttpClient</module>
+        <module>Demo-MongoDB</module>
     </modules>
 
 </project>

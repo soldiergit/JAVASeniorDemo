@@ -25,3 +25,19 @@ su
 4）jsonDemo2 中使用 springMVC 处理请求，返回一个 json 对象
 5）在 jsonDemo1 中将返回的结果插入到 index.jsp 中
 ```
+##
+ 
+### HttpClient学习笔记
+##
+ 
+### MongoDB学习笔记
+MongoDB的启动
+```cfml
+cd /usr/local/mongodb/bin
+./mongod --config /usr/local/mongodb/etc/mongodb.conf
+```
+MongoDB的关闭
+```cfml
+cd /usr/local/mongodb/bin
+./mongod --shutdown --config /usr/local/mongodb/etc/mongodb.conf
+```
