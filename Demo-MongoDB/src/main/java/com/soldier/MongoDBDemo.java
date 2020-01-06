@@ -1,13 +1,15 @@
 package com.soldier;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
 
 /**
  * @ProjectName:JAVA-Senior-Demo
  * @author:soldier
  * @Email:583403411@qq.com
  * @create:20-1-5上午11:45
- * @Describe:   【直连】MongoDB数据库
+ * @Describe:   MongoDB数据库操作
  **/
 public class MongoDBDemo {
 
@@ -27,10 +29,14 @@ public class MongoDBDemo {
 
 //        MongoCollection collection = MongoDBPoolUtil.getCollection("develop", "dev");
 
-        MongoCollection collection = MongoDBAuthPoolUtil.getCollection("develop", "dev");
+//        MongoCollection collection = MongoDBAuthPoolUtil.getCollection("develop", "dev");
+//        System.out.println("获取数据库链接成功......");
 
-        System.out.println("ok......");
-
-
+        MongoDatabase database = MongoDBAuthPoolUtil.getDatabase("develop");
+        //  在某个数据库中创建集合，当MongoDB数据库开启了用户认证，用户必须至少具备userAdminAnyDatabase权限
+//        database.createCollection("test");
+        MongoCollection collection = database.getCollection("test");
+//        System.out.println(collection.getNamespace());
+        MongoDBAuthPoolUtil.dropCollection(collection);
     }
 }
