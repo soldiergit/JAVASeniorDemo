@@ -29,7 +29,7 @@ public class InsertDocument {
     public static void insertSingleDocument () {
         //  获取集合
         MongoCollection collection = MongoDBAuthPoolUtil.getCollection("develop", "devcolltest");
-        //  {}---->Document
+        //  {}---->Document：一个document对象对应MongoDB中的一个{}
         Document document = new Document();
         document.append("username", "lisi").append("userage", 26).append("userdesc", "very good")
                 .append("userlike", Arrays.asList(new String[]{"music", "sport"}));
