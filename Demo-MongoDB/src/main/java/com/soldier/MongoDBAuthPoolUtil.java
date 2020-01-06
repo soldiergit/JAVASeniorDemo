@@ -30,8 +30,8 @@ public class MongoDBAuthPoolUtil {
             builder.socketTimeout(5000);    //读写操作超时时间
 
             //  创建一个封装用户认证信息：用户名、用户所在数据库、密码【dev是具有读写权限的普通用户， soldier是具有userAdminAnyDatabase权限的管理员】
-//            MongoCredential credential = MongoCredential.createCredential("dev", "develop", "devpwd".toCharArray());
-            MongoCredential credential = MongoCredential.createCredential("soldier", "admin", "soldierpwd".toCharArray());
+            MongoCredential credential = MongoCredential.createCredential("dev", "develop", "devpwd".toCharArray());
+//            MongoCredential credential = MongoCredential.createCredential("soldier", "admin", "soldierpwd".toCharArray());
 
             //  封装MongoDB的地址和端口
             ServerAddress serverAddress = new ServerAddress("127.0.0.1", 27017);
